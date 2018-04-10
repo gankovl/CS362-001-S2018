@@ -125,7 +125,8 @@ public class Appt{
     
     //Sets valid to true - this is now a valid appointment
     this.valid = true;
-}
+    }
+    
     /**
      * Constructs a new appointment that has no start time on the 
      * date specified. The appointment is constructed with no recurrence 
@@ -175,13 +176,13 @@ public class Appt{
 			this.valid = false;
 		else if (startYear <= 0)
 			this.valid = false;
-		else {
-			int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth - 1);
-			if (startDay < 1 || startDay > NumDaysInMonth)
-				this.valid = false;
-			else
-				this.valid = true;
-		}
+		
+		int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth - 1);
+		if (startDay < 1 || startDay > NumDaysInMonth)
+			this.valid = false;
+		else
+			this.valid = true;
+
 	}
     
 
@@ -282,8 +283,8 @@ public class Appt{
      * @return True if the appointment occurs on a certain day/month/year
      */
     public boolean isOn(int day, int month, int year) {
-        return (day == getStartDay() && month == getStartMonth() 
-                && year == getStartYear());
+        return (day == getStartDay() || month == getStartMonth() 
+                || year == getStartYear());
     }
     
     /**
@@ -377,8 +378,8 @@ public class Appt{
 		if (!getValid()) {
 		    System.err.println("\tThis appointment is not valid");
 		}
-         String day= this.getStartMonth()+"/"+this.getStartDay()+"/"+this.getStartYear() + " at ";
-        return "\t"+ day +  this.represntationApp()  + " ," +  getTitle()+ ", "+  getDescription()+"\n";
+         String day= this.getStartYear()+"/"+this.getStartMonth()+"/"+this.getStartDay() + " at ";
+        return "\t"+ day +  this.represntationApp()  + " ," +  getDescription()+ ", "+  getTitle()+"\n";
     }
 
 

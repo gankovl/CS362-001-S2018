@@ -22,5 +22,3 @@ public class DateOutOfRangeException extends java.lang.Exception {
         super(msg);
     }
 }
-
-
