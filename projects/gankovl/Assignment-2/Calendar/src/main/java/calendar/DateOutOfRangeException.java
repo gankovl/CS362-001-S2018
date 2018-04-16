@@ -2,7 +2,6 @@
  * DateOutOfRangeException.java
  *
  */
-
 package calendar;
 
 public class DateOutOfRangeException extends java.lang.Exception {
@@ -22,5 +21,3 @@ public class DateOutOfRangeException extends java.lang.Exception {
         super(msg);
     }
 }
-
-
