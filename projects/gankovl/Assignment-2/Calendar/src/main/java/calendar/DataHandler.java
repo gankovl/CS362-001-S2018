@@ -202,7 +202,7 @@ public class DataHandler {
                 }
                 
                 //Construct a new Appointment object with the data found
-                Appt appt = new Appt( 
+                	Appt appt = new Appt( 
                             Integer.parseInt((String)fields.get("startHour")),
                             Integer.parseInt((String)fields.get("startMinute")),
                             Integer.parseInt((String)fields.get("startDay")),

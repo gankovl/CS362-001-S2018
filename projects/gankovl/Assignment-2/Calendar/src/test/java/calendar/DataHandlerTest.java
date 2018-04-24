@@ -1,7 +1,7 @@
 package calendar;
 /**
  *  This class provides a basic set of test cases for the
- *  CalDay class.
+ *  DataHandler class.
  */
 import org.junit.Test;
 
@@ -13,12 +13,11 @@ import java.util.*;
 
 public class DataHandlerTest {
 	
-	
 	@Test
 	public void datahandler_test()	throws Throwable {
 		
 		DataHandler dataHandler = new DataHandler();
-		DataHandler dataHandler2 = new DataHandler("calendar2.xml",true);
+		DataHandler dataHandler2 = new DataHandler("calendar2.xml", false);
 		
 		//make some appointments, initialize them
 		Appt appt_1 = new Appt(14, 0, 1, 1, 1, "title_1", "desc_1", "email_1");
@@ -32,24 +31,49 @@ public class DataHandlerTest {
         
         //set appointment validity
 		appt_1.setValid();
+		boolean test_var = appt_1.getValid();
+		assertTrue(test_var);
+		
 		appt_2.setValid();
+		test_var = appt_2.getValid();
+		assertTrue(test_var);
+		
 		appt_3.setValid();
+		test_var = appt_3.getValid();
+		assertTrue(test_var);
+		
 		appt_4.setValid();
+		test_var = appt_4.getValid();
+		assertTrue(test_var);
+		
 		
 		//save appointments to datahandler
-		dataHandler.saveAppt(appt_1);
-		dataHandler.saveAppt(appt_2);
-		dataHandler.saveAppt(appt_3);
-		dataHandler.saveAppt(appt_4);
+		test_var = dataHandler.saveAppt(appt_1);
+		assertTrue(test_var);
+		
+		test_var = dataHandler.saveAppt(appt_2);
+		assertTrue(test_var);		
+		
+		test_var = dataHandler.saveAppt(appt_3);
+		assertTrue(test_var);
+		
+		test_var = dataHandler2.saveAppt(appt_4);
+		//assertFalse(test_var);
 		
 		
-		
+		//set up time window for initializing the iterator
 		GregorianCalendar today = new GregorianCalendar(1, 1, 1);
 		GregorianCalendar tomorrow = new GregorianCalendar (1, 1, 2);
 		
 		LinkedList<CalDay> calDays = new LinkedList<CalDay>();
-		calDays = (LinkedList<CalDay>) dataHandler.getApptRange(today,tomorrow);	
-
+		LinkedList<CalDay> calDays_2 = new LinkedList<CalDay>();
+		
+		try{
+			calDays_2 = (LinkedList<CalDay>) dataHandler.getApptRange(tomorrow, today);	
+		} catch( Exception e ) {
+			calDays = (LinkedList<CalDay>) dataHandler.getApptRange(today,tomorrow);	
+		}
+			
 		for (int i = 0; i < calDays.size(); i++){
 			CalDay calday= calDays.get(i);	
 			String str= calday.getFullInfomrationApp(calday);
@@ -58,7 +82,14 @@ public class DataHandlerTest {
 		}
 		
 		//delete an appointment
-		dataHandler.deleteAppt(appt_2);
+		test_var = dataHandler.deleteAppt(appt_2);
+		assertTrue(test_var);
+		/*
+		appt_3.setStartDay(32);
+		appt_3.setValid();
+		test_var = dataHandler2.deleteAppt(appt_3);
+		assertFalse(test_var);
+		*/
 		
 	}
 }

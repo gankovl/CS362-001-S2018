@@ -56,7 +56,6 @@ public class CalDayTest {
 		Iterator<?> iter_1 = calday_1.iterator();
 		assertEquals( null, iter_1 );
 		
-		
 		//testing string functions
 		String test_str = calday.toString();
 		assertNotEquals("", test_str);
