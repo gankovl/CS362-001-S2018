@@ -283,8 +283,8 @@ public class Appt{
      * @return True if the appointment occurs on a certain day/month/year
      */
     public boolean isOn(int day, int month, int year) {
-        return (day == getStartDay() || month == getStartMonth() 
-                || year == getStartYear());
+        return (day == getStartDay() && month == getStartMonth() 
+                && year == getStartYear());
     }
     
     /**
@@ -379,7 +379,7 @@ public class Appt{
 		    System.err.println("\tThis appointment is not valid");
 		}
          String day= this.getStartYear()+"/"+this.getStartMonth()+"/"+this.getStartDay() + " at ";
-        return "\t"+ day +  this.represntationApp()  + " ," +  getDescription()+ ", "+  getTitle()+"\n";
+        return "\t"+ day +  this.represntationApp()  + ", " +  getDescription()+ ", "+  getTitle()+"\n";
     }
 
 

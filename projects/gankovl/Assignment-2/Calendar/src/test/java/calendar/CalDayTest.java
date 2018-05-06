@@ -31,17 +31,21 @@ public class CalDayTest {
 	
 	
 	// some appointments
-	Appt appt_1 = new Appt(14, 0, 1, 1, 1, "title_1", "desc_1", "email_1");
-	Appt appt_2 = new Appt(3, 3, 1, "title_2", "desc_2", "email_2");
-	Appt appt_3 = new Appt(5, 30, 1, 1, 1, "title_3", "desc_3", "email_3");
-	Appt appt_4 = new Appt(3, 0, 1, 1, 1, "title_4", "desc_4", "email_4");
+	Appt appt_1  = new Appt(14, 0, 1, 1, 1, "title_1", "desc_1", "email_1");
+	Appt appt_2  = new Appt(3, 3, 1, "title_2", "desc_2", "email_2");
+	Appt appt_3  = new Appt(5, 30, 1, 1, 1, "title_3", "desc_3", "email_3");
+	Appt appt_4  = new Appt(3, 0, 1, 1, 1, "title_4", "desc_4", "email_4");
+	Appt invalid = new Appt(3, 0, 45, 1, 1, "title", "desc", "email");
 	
-	@Test	//adding appts to iterator
+	
+	
+	@Test	//testing iterator
 	public void appt_test()		throws Throwable	{
 		appt_1.setValid();
 		appt_2.setValid();
 		appt_3.setValid();
 		appt_4.setValid();
+		invalid.setValid();
 		
 		//adding appointments into the valid CalDay instance
 		calday.addAppt( appt_1 );
@@ -49,6 +53,35 @@ public class CalDayTest {
 		calday.addAppt( appt_3 );
 		calday.addAppt( appt_4 );
 		calday.addAppt( appt_1 );
+		calday.addAppt( invalid);
+		
+		//testing iterators
+		Iterator<?> iter = calday.iterator();
+		assertNotEquals( null, iter );
+		Iterator<?> iter_1 = calday_1.iterator();
+		assertEquals( null, iter_1 );
+		
+		assertEquals( 5, calday.getSizeAppts() );
+	}
+	
+	
+	
+	
+	@Test	//testing string functions
+	public void appt_test_2()		throws Throwable	{
+		appt_1.setValid();
+		appt_2.setValid();
+		appt_3.setValid();
+		appt_4.setValid();
+		invalid.setValid();
+		
+		//adding appointments into the valid CalDay instance
+		calday.addAppt( appt_1 );
+		calday.addAppt( appt_2 );
+		calday.addAppt( appt_3 );
+		calday.addAppt( appt_4 );
+		calday.addAppt( appt_1 );
+		calday.addAppt( invalid);
 		
 		//testing iterators
 		Iterator<?> iter = calday.iterator();
@@ -62,7 +95,6 @@ public class CalDayTest {
 		
 		test_str = calday.getFullInfomrationApp(calday);
 		assertNotEquals("", test_str);
-		
 	}
 	
 	
