@@ -528,7 +528,7 @@ public class DataHandler {
     }
     
     /**
-     * Writes a new XML file to disk.
+     * Writes a new  file to disk.
      **/
     public boolean save() {
         
