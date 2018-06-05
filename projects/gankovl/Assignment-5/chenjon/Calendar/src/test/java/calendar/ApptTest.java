@@ -508,7 +508,7 @@ public class ApptTest {
 	 public void string_2_1()	throws Throwable	{ 
 		 my_appt_1.setStartDay(74);
 		 my_appt_1.setValid();
-		 String output = "\t2018/4/74 at 12:11pm, desc, title\n";
+		 String output = "\t4/74/2018 at 12:11pm, title, desc\n";
 		 assertEquals( output,  my_appt_1.toString() );
 	 } 
 	 
@@ -516,15 +516,15 @@ public class ApptTest {
 	 public void string_2_2()	throws Throwable	{ 
 		 my_appt_1.setStartHour(3);
 		 my_appt_1.setValid();
-		 String output = "\t2018/4/13 at 3:11am, desc, title\n";
+		 String output = "\t4/13/2018 at 3:11am, title, desc\n";
 		 assertEquals( output,  my_appt_1.toString() );
 	 } 
-/*
+
 	@Test 	//testing toString output (pm conditional)
 	public void string_2_3()	throws Throwable	{ 
 		 my_appt_1.setStartHour(17);
 		 my_appt_1.setValid();
-		 String output = "\t2018/4/13 at 5:11pm, desc, title\n";
+		 String output = "\t4/13/2018 at 5:11pm, title, desc\n";
 		 assertEquals( output,  my_appt_1.toString() );
 	 } 
 	 
@@ -532,10 +532,9 @@ public class ApptTest {
 	public void string_2_4()	throws Throwable	{
 		my_appt_1.setStartHour(12);
 		my_appt_1.setValid();
-		String output = "\t2018/4/13 at 12:11pm, desc, title\n";
+		String output = "\t4/13/2018 at 12:11pm, desc, title\n";
 		assertEquals( output,  my_appt_1.toString() );
-	}
-*/	
+	}	
 	
 // testing email, desc, title set.	
 	 @Test
