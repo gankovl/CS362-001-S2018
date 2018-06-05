@@ -173,7 +173,7 @@ public class Appt{
 			this.valid = false;
 		else if (startMinute < 0 || startMinute > 59)
 			this.valid = false;
-		else if (startYear >= 0)
+		else if (startYear <= 0)
 			this.valid = false;
 		else {
 			int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth - 1);
@@ -357,11 +357,11 @@ public class Appt{
      * @return a printable representation of this appointment
      */
     private String represntationApp(){
-        String half = (getStartHour() < 11) ? "pm" : "am";
+        String half = (getStartHour() > 11) ? "pm" : "am";
         int printableHour = getStartHour();
         if (printableHour > 11)
         {
-            printableHour += 12;
+            printableHour -= 12;
         }
         if (printableHour == 0)
         {
